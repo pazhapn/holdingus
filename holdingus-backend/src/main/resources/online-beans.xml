@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+		
+	<bean id="SearchClient" class="in.ohsamba.common.es.index.SearchClient" destroy-method="shutdown">
+ 		<constructor-arg name="esServerAddress" value="${search.server}"/>
+ 		<constructor-arg name="esServerPort" value="${search.port}"/>
+ 	</bean>  
+ 	
+    <bean id="IndexMappingHandler" class="in.ohsamba.common.es.index.IndexMappingHandler">
+ 		<constructor-arg name="searchClient">
+ 			<ref bean="SearchClient"/>
+ 		</constructor-arg>
+ 	</bean>
+ 	
+    <bean id="PriceTrackIndexBuilder" class="in.ohsamba.online.index.PriceTrackIndexBuilder">
+ 		<constructor-arg name="eligibilityAnalyzer">
+ 			<ref bean="DealEligibilityAnalyzer"/>
+ 		</constructor-arg>
+ 		<constructor-arg name="indexHandler">
+ 			<ref bean="IndexMappingHandler"/>
+ 		</constructor-arg>
+ 		<constructor-arg name="sourceFolder" value="${sourceFolder}"/>
+ 	</bean>  
+ 	 
+</beans>

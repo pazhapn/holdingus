@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+    
+	<bean id="fkPriceHistoryDAO" class="in.ohsamba.common.dao.BaseDAO">
+		<constructor-arg name="claz" value="in.ohsamba.common.model.PriceHistory"/>
+		<constructor-arg name="dbStore" ref="dbStore"/>
+		<constructor-arg name="collectionName" value="FKPriceHistory"/>
+	</bean>		  	
+ 	<bean id="fkPriceHistoryService" class="in.ohsamba.common.service.BaseService">
+ 		<constructor-arg name="dao">
+ 			<ref bean="fkPriceHistoryDAO"/>
+ 		</constructor-arg>
+ 	</bean>  	  	
+ 	<bean id="fkCSVModelDAO" class="in.ohsamba.common.dao.BaseDAO">
+		<constructor-arg name="claz" value="in.ohsamba.common.model.FKCSVModel"/>
+		<constructor-arg name="dbStore" ref="dbStore"/>
+		<constructor-arg name="collectionName" value="FKCSVModel"/>
+	</bean>		  	
+ 	<bean id="fkCSVModelService" class="in.ohsamba.common.service.BaseService">
+ 		<constructor-arg name="dao">
+ 			<ref bean="fkCSVModelDAO"/>
+ 		</constructor-arg>
+ 	</bean>  	  
+ 	
+</beans>
