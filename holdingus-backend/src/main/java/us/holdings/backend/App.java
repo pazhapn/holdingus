@@ -4,6 +4,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+import us.holdings.backend.collector.ZackCollector;
+
 @Configuration
 @ComponentScan({ "us.holdings.backend" })
 public class App {
@@ -16,10 +18,11 @@ public class App {
 			e.printStackTrace();
 		}
 	}
-	public void run(){
-    	AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(App.class);
-    	//new WebConfig(ctx.getBean(MiniTwitService.class));
-        ctx.registerShutdownHook();
+	public void run() throws Exception{
+    	try(AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(App.class)){
+        	ctx.getBean(ZackCollector.class).getMFStocks("VGENX");
+            ctx.registerShutdownHook();
+    	};
     }
     
     

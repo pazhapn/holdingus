@@ -7,7 +7,7 @@
     </encoder>
 		
 	    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-	        <level>INFO</level>
+	        <level>DEBUG</level>
 	    </filter>
   </appender>
   
@@ -15,7 +15,7 @@
     <Logger name="io" level="warn"/>
     <Logger name="com" level="warn"/>
     <Logger name="spark" level="warn"/>
-    <Logger name="dhan" level="debug"/>
+    <Logger name="us" level="debug"/>
    
  
   <root>

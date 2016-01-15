@@ -26,13 +26,11 @@
 		<netty.version>4.0.33.Final</netty.version>
 		<spring.version>4.2.4.RELEASE</spring.version>
 		<jsoup.version>1.8.3</jsoup.version>
+		<selenium.version>2.49.0</selenium.version>
+		<supercsv.version>2.4.0</supercsv.version>
+		<guava.version>19.0</guava.version>
 	</properties>
   <dependencies>
-    <dependency>
-		<groupId>com.fasterxml.jackson.core</groupId>
-		<artifactId>jackson-databind</artifactId>
-		<version>${jackson.version}</version>
-	</dependency>
 	<dependency>
 		<groupId>com.fasterxml.jackson.module</groupId>
 		<artifactId>jackson-module-afterburner</artifactId>
@@ -47,11 +45,17 @@
 	    <groupId>ch.qos.logback</groupId>
 	    <artifactId>logback-classic</artifactId>
 	    <version>${logback.version}</version>
-	</dependency>
+  	</dependency>
 	<dependency>
 	  <groupId>com.ning</groupId>
 	  <artifactId>async-http-client</artifactId>
 	  <version>${async.version}</version>
+	  <exclusions>
+	  	<exclusion>
+	  		<artifactId>slf4j-api</artifactId>
+	  		<groupId>org.slf4j</groupId>
+	  	</exclusion>
+	  </exclusions>
 	</dependency>
 	<dependency>
 		<groupId>org.springframework</groupId>
@@ -64,7 +68,22 @@
 	  <artifactId>jsoup</artifactId>
 	  <version>${jsoup.version}</version>
 	</dependency>
+    <dependency>
+		<groupId>net.sf.supercsv</groupId>
+		<artifactId>super-csv</artifactId>
+		<version>${supercsv.version}</version>
+	</dependency>
+    <dependency>
+	  <groupId>com.google.guava</groupId>
+	  <artifactId>guava</artifactId>
+	  <version>${guava.version}</version>
+	</dependency>
 	<!-- 
+	<dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-java</artifactId>
+        <version>${selenium.version}</version>
+    </dependency>  
 	<dependency>
 	    <groupId>io.netty</groupId>
 	    <artifactId>netty-all</artifactId>
