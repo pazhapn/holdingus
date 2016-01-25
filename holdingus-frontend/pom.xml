@@ -6,7 +6,57 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>holdingus-frontend</artifactId>
+  <properties>
+		<jdk.version>1.8</jdk.version>
+		<spark.version>2.4-SNAPSHOT</spark.version>
+		<spark.pebble.version>2.3</spark.pebble.version>
+		<pebble.version>2.0.0</pebble.version>
+		<commons.beanutils.version>1.9.2</commons.beanutils.version>
+		<apache.drill>1.4.0</apache.drill>
+	</properties>
   <dependencies>
-    
+	<dependency>
+	    <groupId>holdingus</groupId>
+	    <artifactId>holdingus-common</artifactId>
+	    <version>0.0.1-SNAPSHOT</version>
+	</dependency>
+	<dependency>
+	    <groupId>com.sparkjava</groupId>
+	    <artifactId>spark-core</artifactId>
+	    <version>${spark.version}</version>
+	</dependency>
+  	<dependency>
+	    <groupId>com.sparkjava</groupId>
+	    <artifactId>spark-template-pebble</artifactId>
+	    <version>${spark.pebble.version}</version>
+	    <exclusions>
+	    	<exclusion>
+	    		<artifactId>slf4j-simple</artifactId>
+	    		<groupId>org.slf4j</groupId>
+	    	</exclusion>
+	    </exclusions>
+  	</dependency>
+  	<dependency>
+		<groupId>com.mitchellbosecke</groupId>
+		<artifactId>pebble</artifactId>
+		<version>${pebble.version}</version>
+	</dependency>		
+	<!-- Populate bean from request -->
+	<dependency>
+		<groupId>commons-beanutils</groupId>
+		<artifactId>commons-beanutils</artifactId>
+		<version>${commons.beanutils.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.drill.exec</groupId>
+		<artifactId>drill-jdbc</artifactId>
+		<version>${apache.drill}</version>
+	    <exclusions>
+	    	<exclusion>
+	    		<artifactId>jdk.tools</artifactId>
+	    		<groupId>jdk.tools</groupId>
+	    	</exclusion>
+	    </exclusions>
+	</dependency>	
   </dependencies>
 </project>

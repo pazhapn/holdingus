@@ -3,17 +3,21 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
 		
-	<bean id="SearchClient" class="in.ohsamba.common.es.index.SearchClient" destroy-method="shutdown">
- 		<constructor-arg name="esServerAddress" value="${search.server}"/>
- 		<constructor-arg name="esServerPort" value="${search.port}"/>
+	<bean id="httpWorker" class="us.holdings.backend.http.HttpWorker" destroy-method="shutdown">
  	</bean>  
  	
-    <bean id="IndexMappingHandler" class="in.ohsamba.common.es.index.IndexMappingHandler">
- 		<constructor-arg name="searchClient">
- 			<ref bean="SearchClient"/>
+    <bean id="zacksMFCollector" class="us.holdings.backend.collector.ZacksMFCollector">
+ 		<constructor-arg name="httpWorker">
+ 			<ref bean="httpWorker"/>
  		</constructor-arg>
+ 		<constructor-arg name="zacksMFService">
+ 			<ref bean="zacksMFService"/>
+ 		</constructor-arg>
+ 		<constructor-arg name="zacksMFSymbolFile" value="${zacksMFSymbolFile}"/>
+ 		<constructor-arg name="zacksMFSymbolMissedFile" value="${zacksMFSymbolMissedFile}"/>
+ 		<constructor-arg name="zacksMFSymbolToRetrieveIsMissed" value="${zacksMFSymbolToRetrieveIsMissed}"/> 		
  	</bean>
- 	
+ 	<!-- 
     <bean id="PriceTrackIndexBuilder" class="in.ohsamba.online.index.PriceTrackIndexBuilder">
  		<constructor-arg name="eligibilityAnalyzer">
  			<ref bean="DealEligibilityAnalyzer"/>
@@ -23,5 +27,5 @@
  		</constructor-arg>
  		<constructor-arg name="sourceFolder" value="${sourceFolder}"/>
  	</bean>  
- 	 
+ 	  -->
 </beans>

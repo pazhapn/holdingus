@@ -5,10 +5,10 @@
 	
 	<bean id="dataConfigs" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="ignoreUnresolvablePlaceholders" value="true"/>
-   		<property name="locations" value="classpath:online-spring.conf"/>
+   		<property name="locations" value="classpath:backend-spring.conf"/>
 	</bean> 
 	
- 	<bean id="dbStore" class="in.ohsamba.common.db.DBStore" destroy-method="shutdown">
+ 	<bean id="dbStore" class="us.holdings.common.db.DBStore" destroy-method="shutdown">
  		<constructor-arg name="serverAddress" value="${dbStore.server}"/>
  		<constructor-arg name="serverPort" value="${dbStore.port}"/>
  		<constructor-arg name="dbName" value="${dbStore.dbName}"/>

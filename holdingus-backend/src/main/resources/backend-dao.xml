@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+    
+	<bean id="zacksMFDAO" class="us.holdings.common.dao.BaseDAO">
+		<constructor-arg name="claz" value="us.holdings.common.model.ZacksMF"/>
+		<constructor-arg name="dbStore" ref="dbStore"/>
+		<constructor-arg name="collectionName" value="ZacksMF"/>
+	</bean>		
+</beans>

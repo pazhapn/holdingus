@@ -1,13 +1,9 @@
 package us.holdings.backend;
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import us.holdings.backend.collector.ZackCollector;
+import us.holdings.backend.collector.ZacksMFCollector;
 
-@Configuration
-@ComponentScan({ "us.holdings.backend" })
 public class App {
 	
 	public static void main(String[] args) {
@@ -19,8 +15,8 @@ public class App {
 		}
 	}
 	public void run() throws Exception{
-    	try(AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(App.class)){
-        	ctx.getBean(ZackCollector.class).getMFStocks("VGENX");
+    	try(ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("backend-app.xml")){
+        	ctx.getBean(ZacksMFCollector.class).getAllMFStocks();
             ctx.registerShutdownHook();
     	};
     }
