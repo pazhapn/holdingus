@@ -71,12 +71,13 @@
 	 -->
   </dependencies>
   <build>
+  <!-- 
     <plugins>
       <plugin>
         <artifactId>maven-dependency-plugin</artifactId>
         <executions>
           <execution>
-            <phase>package</phase>
+            <phase>process-sources</phase>
             <goals>
               <goal>copy-dependencies</goal>
             </goals>
@@ -88,5 +89,6 @@
         </executions>
       </plugin>
     </plugins>
+     -->
   </build>
 </project>
